@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+React User Management System
+A simple user management system built with React, utilizing role-based access control (RBAC) for user roles and permissions, login, signup, and admin functionalities. The application provides a dashboard where users can manage their profiles, while admins can manage all users, including assigning roles and permissions.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Login/Signup: Users can register and log in with their email and password.
+Role-based Access Control: Admin users can manage roles and permissions, and access restricted features based on their role.
+Protected Routes: Certain routes are protected and accessible only to authenticated users with specific roles.
+Admin Dashboard: Admin users can add, edit, or delete users, and manage roles and permissions.
+Local Storage: User data is stored in local storage for persistence.
+Technologies Used
+React: A JavaScript library for building user interfaces.
+Material-UI: A popular React UI framework for building responsive layouts and interactive components.
+React Router: For routing between different pages and components.
+Context API: For managing authentication state across the app.
 
-## Available Scripts
+Installation
+To set up the project locally:
 
-In the project directory, you can run:
+Clone the repository:
+git clone https://github.com/yourusername/react-user-management.git
 
-### `npm start`
+Navigate to the project directory:
+cd react-user-management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install the dependencies:
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Start the development server:
+npm start
 
-### `npm test`
+Open the application in your browser:
+http://localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+File Structure
+The project structure is organized as follows:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+src/
+│
+├── pages/
+│   ├── AdminPage.js         # Admin Dashboard where users can be managed
+│   ├── Home.js              # Home page displaying user information
+│   ├── Login.js             # Login page for existing users
+│   ├── RoleManagement.js    # Page for managing roles and permissions
+│   ├── Signup.js            # Signup page for new users
+│   ├── Permissions.js       # Page for managing permissions for a role
+│
+├── components/
+│   ├── Header.js            # Navigation bar with login/logout functionality
+│   ├── ProtectedRoute.js    # Higher-order component for protected routes
+│
+├── utils/
+│   └── LocalStorage.js      # Utility for managing local storage operations
+│
+├── context/
+│   └── AuthContext.js       # Context for managing authentication state
+│
+├── constants/
+│   └── mockData.js          # Mock data for users, roles, and permissions
+│
+├── App.js                   # Main component, renders routes
+└── index.js                 # Entry point for the React app
+Key Components
+Header.js
+This component displays a navigation bar with a greeting and logout button. It shows the logged-in user's username and provides a logout button that redirects to the login page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ProtectedRoute.js
+A higher-order component that checks if the user is authenticated and if they have the required role to access the page. If not, they are redirected to the login page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+mockData.js
+This file contains mock user data, including user credentials, roles, and permissions. It also provides utility functions for getting, saving, and adding users to local storage.
 
-### `npm run eject`
+AuthContext.js
+Manages the authentication state of the user, providing login, logout, and current user data across the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Login.js & Signup.js
+These components handle user authentication. Login.js allows existing users to log in, while Signup.js lets new users register. Both forms validate user input and store the user data in local storage.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+AdminPage.js
+An admin-only page that displays a list of all users with actions to add, edit, or delete users. Admins can manage user roles and permissions directly from this page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Permissions.js
+Allows admins to manage and assign permissions to different roles, such as "read," "write," and "delete."
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+How to Use
+User Registration: Navigate to the signup page (/signup) to create a new user account. After registration, you will be redirected to the login page.
 
-## Learn More
+Login: Use your credentials to log in at the login page (/login). Once logged in, you will be redirected to the home page (/home), where you can view your profile and role details.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Admin Panel: If you are an admin user, you will see the "Go to Admin Panel" button in your home page, which takes you to the admin dashboard (/admin). In this panel, you can manage users, roles, and permissions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Role-Based Access: Some routes and features are protected, meaning only users with specific roles can access them. Unauthorized users will be redirected to the login page.

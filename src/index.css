@@ -1,13 +1,115 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --background: #f5f5f5;
+  --foreground: #333333;
+  --primary-color: #3f51b5; /* A deeper blue for a modern look */
+  --secondary-color: #e91e63; /* Vibrant pink for highlights */
+  --accent-color: #ff9800; /* Accent color for subtle emphasis */
+  --font-family: "Roboto", "Arial", sans-serif;
+  --border-color: #e0e0e0;
+  --hover-color: rgba(0, 0, 0, 0.04);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121212;
+    --foreground: #e0e0e0;
+    --primary-color: #90caf9;
+    --secondary-color: #f48fb1;
+    --accent-color: #ffb74d;
+    --border-color: #424242;
+    --hover-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.8;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+button {
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--background);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--hover-color);
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+tr:hover {
+  background-color: var(--hover-color);
+}
+
+.status-active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.role-admin {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.role-user {
+  color: var(--secondary-color);
+  font-weight: bold;
 }
